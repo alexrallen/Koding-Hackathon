@@ -1,4 +1,4 @@
 <?php
 phpinfo();
-echo "This better fucking work.";
+echo "This better fucking work. DAMN!";
 ?>
