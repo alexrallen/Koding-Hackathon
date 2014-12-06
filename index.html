@@ -112,12 +112,35 @@ var s_code = s.t();</script>
     	
     	<!-- OUR CODE -->
     	
-		<form action="legal.php" method="post">
-			Name: <input type="text" name="legal"> <input
-				type="submit">
+		<form id="pq">
+			Name: <input type="text" name="legal"> <button type="submit">Submit</button>
 		</form>
 		<br/>
-		<textarea id="output" editable="false" readonly="true"></textarea>
+		<textarea id="output" editable="false" readonly="true" style="resize:none;"></textarea>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		
+		<script> 
+		(function($){ 
+			function processForm( e ){ 
+				$.ajax({ 
+					url: 'legal.php', 
+					dataType: 'text', 
+					type: 'post', 
+					contentType: 'application/x-www-form-urlencoded', 
+					data: 'this is a test', 
+					success: function( data, textStatus, jQxhr ){ $
+						output.textContent = data;
+					}, 
+					error: function( jqXhr, textStatus, errorThrown ){ 
+						console.log( errorThrown ); 
+					} 
+				}); 
+				e.preventDefault(); } 
+			$('#pq').submit( processForm ); 
+		})(jQuery); 
+		</script>
+
 		
 		<!-- /OUR CODE -->
 		
