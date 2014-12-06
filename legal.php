@@ -1,3 +1,4 @@
 <?php 
-	echo "It works!"; 
+	$data = preg_replace('/<.*?>/', "", $_POST['legal']);
+	echo $data;
 ?> 
