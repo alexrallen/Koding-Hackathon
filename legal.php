@@ -1,4 +1,4 @@
 <?php 
 	$data = preg_replace('/<.*?>/', "", $_POST['legal']);
-	echo $data;
+	echo ("[\"TEST1\",\"TEST2\",\"TEST3\"]");
 ?> 
