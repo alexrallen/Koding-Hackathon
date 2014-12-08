@@ -52,8 +52,7 @@
 	<script src="lib/jquery.cookie.js"></script>
 
 	<script> 
-		(function($){ 
-			$(document).load(function(e){ 
+				
 				$.ajax({ 
 					url: 'legal.php', 
 					dataType: 'text', 
@@ -61,17 +60,17 @@
 					contentType: 'application/x-www-form-urlencoded', 
 					data: {legal:$('#main').html()}, 
 					success: function( data, textStatus, jQxhr ){
+						window.zest = JSON.parse(data);
 						var z = JSON.parse(data);
 						$.cookie("sec", z.length);
 						$.cookie("dat", JSON.stringify(z));
-						$(".scrollingBox")[0].childNodes[9].innerText = z[0];
+						$(".scrollingBox")[0].childNodes[3].innerText = z[0];
 					}, 
 					error: function( jqXhr, textStatus, errorThrown ){ 
 						console.log( errorThrown ); 
 					} 
 				}); 
-			}); 
-		}); 
+ 
 	</script>
 
 	<script>
@@ -93,7 +92,7 @@
 					});
 					
 					var num = parseInt($.cookie("sec"));
-					var arr = JSON.parse($.cookie("dat"));
+					var arr = window.zest;
 					
 					
 					
@@ -123,7 +122,7 @@
 		
 		function setScrollDat(dat){
 			
-			$(".scrollingBox")[0].childNodes[9].innerText = dat;
+			$(".scrollingBox")[0].childNodes[3].innerText = dat;
 			
 		}
 
@@ -132,10 +131,8 @@
 
 	<div class="sidebarBox">
 
-		<div class="scrollingBox">
-			<h3>A Big Heading Text</h3>
-			<img src="an-image.jpg" alt="inside the scrolling box"> <br />
-			<br />
+		<div class="scrollingBox" style="background:#771919; -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px; -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px; box-shadow: rgba(0,0,0,0.2) 0px 1px 3px; color: #141414; padding-top: 5px; padding-bottom: 5px; padding-left:5px; padding-right:5px; font-size: 20; width:280px; height:350px">
+			<h1>Plain English</h1>
 			<p>Some text inside the scrolling box</p>
 		</div>
 
